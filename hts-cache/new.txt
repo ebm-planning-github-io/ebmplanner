@@ -1,0 +1,4 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+12:16:25	130238/130238	---MCZ	200	added ('OK')	text/html	date:Thu,%2027%20Apr%202023%2016:16:24%20GMT	https://sites.google.com/view/srem-rss	/Users/ayushjain/Desktop/websites/ebm/sites.google.com/view/srem-rss.html	(from )
+12:16:26	77/77	---MCZ	200	added ('OK')	text/plain	date:Thu,%2027%20Apr%202023%2016:16:25%20GMT	https://sites.google.com/robots.txt		(from )
+12:16:27	130263/130263	---MCZ	200	added ('OK')	text/html	date:Thu,%2027%20Apr%202023%2016:16:26%20GMT	https://sites.google.com/view/srem-rss/home	/Users/ayushjain/Desktop/websites/ebm/sites.google.com/view/srem-rss/home.html	(from https://sites.google.com/view/srem-rss)
