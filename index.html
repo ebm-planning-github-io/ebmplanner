@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds">
-  <meta name="keywords" content="BUTD-DETR, 3D language grounding, 2D Language grounding">
+        content="">
+  <meta name="keywords" content="EBM, energy based models, robotics, manipulation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <article class="post-content">
-    <meta name="twitter:title" content="Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds"/>
+    <meta name="twitter:title" content="Energy-based Models as Zero-Shot Planners for Compositional Scene Rearrangement"/>
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://butd-detr.github.io/static/images/teaser.png" />
+    <meta name="twitter:image" content="https://ebmplanner.github.io/static/images/teaser.png" />
   <article class="post-content">
 
-  <title>Bottom Up and Top Down Detection Transformers for Language Grounding in Images and Point Clouds</title>
+  <title>Energy-based Models as Zero-Shot Planners for Compositional Scene Rearrangement</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -728,30 +728,35 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds</h1>
+          <h1 class="title is-1 publication-title">Energy-based Models as Zero-Shot Planners for Compositional Scene Rearrangement</h1>
           <div class="is-size-4 publication-authors">
             <span class="author-block">
-              <a href="https://ayushjain1144.github.io/">Ayush Jain</a><sup>*</sup><sup>1</sup>,</span>
+              <a href="https://nickgkan.github.io/">Nikolaos Gkanatsios</a><sup>*</sup>,</span>
             <span class="author-block">
-              <a href="https://nickgkan.github.io/">Nikolaos Gkanatsios</a><sup>*</sup><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://ishita.io/">Ishita Mediratta</a><sup>2</sup>,
+              <a href="https://ayushjain1144.github.io/">Ayush Jain</a><sup>*</sup>,</span>
+              <span class="author-block">
+              <a href="https://scholar.google.com.sg/citations?user=Kbi2t9sAAAAJ&hl=en">Zhou Xian</a>,
             </span>
             <span class="author-block">
-              <a href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a><sup>1</sup>
+              <a href="https://www.ri.cmu.edu/ri-people/yunchu-zhang/">Yunchu Zhang</a>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.cs.cmu.edu/~cga/">Christopher G. Atkeson</a>
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a>
             </span>
             
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Carnegie Mellon University,</span>
-            <span class="author-block"><sup>2</sup>Meta AI</span>
+            <span class="author-block">Carnegie Mellon University,</span>
           </div>
           
           <div class="is-size-5 contribution">
-            <span class="appear"><a href="https://eccv2022.ecva.net/">ECCV 2022</a></span>
+            <span class="appear"><a href="https://roboticsconference.org/">RSS 2023</a></span>
           </div>
 
           <div class="is-size-5 contribution">
-            <span class="contribution"><sup>*</sup>Equal Contribution (God may not play dice, we do)</span>
+            <span class="contribution"><sup>*</sup>Equal Contribution</span>
           </div><br> 
 
           <!-- <table align=center width=700px>
@@ -766,7 +771,7 @@
           <a href="https://arxiv.org/abs/2112.08879" target="_blank"><span class="material-symbols-rounded">
           description
           </span><span>Paper</span></a>
-          <a href="https://github.com/nickgkan/butd_detr" target="_blank"><span class="material-symbols-rounded">
+          <a href="https://github.com/ayushjain1144/ebmplanner" target="_blank"><span class="material-symbols-rounded">
           code
           </span><span>Code</span></a>
           <!-- <a href="#results"><span class="material-symbols-rounded">
@@ -790,7 +795,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Most models tasked to ground referential utterances in 2D and 3D scenes learn to select the referred object from a pool of object proposals provided by a pre-trained detector. This is limiting because an utterance may refer to visual entities at various levels of granularity, such as the chair, the leg of the chair, or the tip of the front leg of the chair, which may be missed by the detector. We propose a language grounding model that attends on the referential utterance and on the object proposal pool computed from a pre-trained detector to decode referenced objects with a detection head, without selecting them from the pool. In this way, it is helped by powerful pre-trained object detectors without being restricted by their misses. We call our model Bottom Up Top Down DEtection TRansformers (BUTD-DETR) because it uses both language guidance (top down) and objectness guidance (bottom-up) to ground referential utterances in images and point clouds. Moreover, BUTD-DETR casts object detection as referential grounding and uses object labels as language prompts to be grounded in the visual scene, augmenting supervision for the referential grounding task in this way. The proposed model sets a new state-of-the-art across popular 3D language grounding benchmarks with significant performance gains over previous 3D approaches (12.6% on SR3D, 11.6% on NR3D and 6.3% on ScanRefer). When applied in 2D images, it performs on par with the previous state of the art. We ablate the design choices of our model and quantify their contribution to performance.
+            Language is compositional; an instruction can express multiple relation constraints to hold among  objects in a scene that a robot is tasked to rearrange. Our focus in this work is an instructable  scene rearranging  framework that  generalizes to  longer instructions and to spatial concept compositions never seen at training time. We  propose to represent language-instructed spatial concepts with energy functions over relative object arrangements. A language parser  maps instructions to  corresponding energy functions and an open-vocabulary visual-language  model  grounds their   arguments  to relevant objects in the  scene. We generate goal scene configurations by gradient descent on the sum of  energy functions, one per language predicate in the instruction.  Local vision-based policies  then re-locate objects to the inferred goal locations. We test our model on established instruction-guided manipulation benchmarks, as well as benchmarks of compositional instructions we introduce.  We show our model can execute highly compositional instructions zero-shot in simulation and in the real world.  It outperforms language-to-action  reactive policies and  Large Language Model planners by a large margin,  especially for long  instructions that involve  compositions of multiple spatial concepts.
           </p>
         </div>
       </div>
@@ -802,7 +807,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/rvZOKMJ7RBY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://drive.google.com/file/d/1ET4QyJ8WsqHwDz6PxgD-EuhZoq5FdGFl/view" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -815,11 +820,11 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3"> Method: BUTD-DETR (pronounced Beauty-DETR)</h2>
+        <h2 class="title is-3"> Method: SREM </h2>
         
         <div class="col-md-8 col-md-offset-2">
                 <figure>
-                    <img src="./static/images/teaser.png" style="padding-bottom:10px" class="img-responsive" alt="overview">
+                    <img src="./static/images/model.png" style="padding-bottom:10px" class="img-responsive" alt="overview">
                     <!-- <figcaption class="figure-caption text-center" style="font-size: 14px;">
                         <b>Fig. 5.</b> The ReferIt3DNet neural listener.
                     </figcaption> -->
@@ -828,10 +833,7 @@
         
         <div class="content has-text-justified">
           <p>
-            Given a 3D scene and a language referential utterance, the model localizes all object instances mentioned in the
-	    utterance. A pre-trained object detector extracts object box proposals. The 3D point cloud, the language utterance and the labelled box proposals are encoded
-	   into corresponding sequences of point, word and box tokens using visual, language and box encoders, respectively. The three streams cross-attend and finally
-	   decode boxes and corresponding spans in the language utterance that the decoded box refers to.
+            Given an image and a language instruction, a semantic parser maps the language into a set of  energy functions (BinaryEBM, MultiAryEBM), one for each spatial predicate in the instruction, and calls  to an open-vocabulary visual language grounder (VLMGround) to localize the object arguments of each energy function mentioned in the instruction, here "fruits" and "plate". Gradient descent on the sum of energy functions with respect to object spatial coordinates generates the goal scene configuration. Vision-based neural policies  condition on the predicted pick and place visual image crops and predict accurate pick and place locations to manipulate the objects. 
           </p>
         </div>
       </div>
@@ -849,7 +851,7 @@
        
         <div class="content has-text-justified">
           <p>
-            BUTD-DETR achieves state-of-the-art performance on 3D language grounding, outperforming all previous models as well as an MDETR-3D equivalent that we implemented.
+            SREM outperforms state-of-the-art Large Language Model planners on highly compositional tasks. 
           </p>
         </div>
 
@@ -861,20 +863,20 @@
                     </figcaption> -->
                 </figure>
     </div>
-    <div class="content has-text-justified">
+    <!-- <div class="content has-text-justified">
       <p>
         BUTD-DETR works on 2D domain as well achieving comparable performance to MDETR, while converging twice as fast, due to architectural optimizations such as deformable attention. With minimal changes, our model works both on 3D and 2D, thus taking a step towards unifying grounding models for 2D and 3D.
       </p>
-    </div>
+    </div> -->
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
+     Abstract. -->
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3"> Qualitative Results: 3D </h2>
         
@@ -893,12 +895,11 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3"> Qualitative Results: 2D </h2>
@@ -918,7 +919,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 
@@ -933,16 +934,13 @@
       <!-- <a href="htps://arxiv.org/abs/2112.08879">[Paper]</a> -->
     </span>
     <pre><code>
-      @misc{https://doi.org/10.48550/arxiv.2112.08879,
-        doi = {10.48550/ARXIV.2112.08879},
-        url = {https://arxiv.org/abs/2112.08879},
-        author = {Jain, Ayush and Gkanatsios, Nikolaos and Mediratta, Ishita and Fragkiadaki, Katerina},
-        keywords = {Computer Vision and Pattern Recognition (cs.CV), Computation and Language (cs.CL), FOS: Computer and information sciences, FOS: Computer and information sciences},
-        title = {Bottom Up Top Down Detection Transformers for Language Grounding in Images and Point Clouds},
-        publisher = {arXiv},
-        year = {2021},
-        copyright = {Creative Commons Attribution 4.0 International}
-      }
+      @article{gkanatsiosspatial,
+        title={Spatial reasoning as Object Graph Energy Minimization},
+        author={Gkanatsios, Nikolaos and Jain, Ayush and Xian, Zhou and Zhang, Yunchu and Fragkiadaki, Katerina}
+      }@article{gkanatsiosspatial,
+  title={Spatial reasoning as Object Graph Energy Minimization},
+  author={Gkanatsios, Nikolaos and Jain, Ayush and Xian, Zhou and Zhang, Yunchu and Fragkiadaki, Katerina}
+}
     </code></pre>
 
     <!-- <span class="author-block">
