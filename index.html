@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <article class="post-content">
-    <meta name="twitter:title" content="Energy-based Models Are Zero-Shot Planners for Compositional Scene Rearrangement"/>
+    <meta name="twitter:title" content="Energy-based Models are Zero-Shot Planners for Compositional Scene Rearrangement"/>
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://ebmplanner.github.io/static/images/teaser.png" />
+    <meta name="twitter:image" content="./static/images/teaser.png" />
   <article class="post-content">
 
   <title>Energy-based Models Are Zero-Shot Planners for Compositional Scene Rearrangement</title>
@@ -728,17 +728,17 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Energy-based Models Are Zero-Shot Planners for Compositional Scene Rearrangement</h1>
+          <h1 class="title is-1 publication-title">Energy-based Models are Zero-Shot Planners for Compositional Scene Rearrangement</h1>
           <div class="is-size-4 publication-authors">
             <span class="author-block">
               <a href="https://nickgkan.github.io/">Nikolaos Gkanatsios</a><sup>*</sup>,</span>
             <span class="author-block">
               <a href="https://ayushjain1144.github.io/">Ayush Jain</a><sup>*</sup>,</span>
               <span class="author-block">
-              <a href="https://scholar.google.com.sg/citations?user=Kbi2t9sAAAAJ&hl=en">Zhou Xian</a>,
+              <a href="https://www.zhou-xian.com/">Zhou Xian</a>,
             </span>
             <span class="author-block">
-              <a href="https://www.ri.cmu.edu/ri-people/yunchu-zhang/">Yunchu Zhang</a>,
+              <a href="https://github.com/YunchuZhang">Yunchu Zhang</a>,
             </span>
             <span class="author-block">
               <a href="http://www.cs.cmu.edu/~cga/">Christopher G. Atkeson</a>
@@ -795,7 +795,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Language is compositional; an instruction can express multiple relation constraints to hold among  objects in a scene that a robot is tasked to rearrange. Our focus in this work is an instructable  scene rearranging  framework that  generalizes to  longer instructions and to spatial concept compositions never seen at training time. We  propose to represent language-instructed spatial concepts with energy functions over relative object arrangements. A language parser  maps instructions to  corresponding energy functions and an open-vocabulary visual-language  model  grounds their   arguments  to relevant objects in the  scene. We generate goal scene configurations by gradient descent on the sum of  energy functions, one per language predicate in the instruction.  Local vision-based policies  then re-locate objects to the inferred goal locations. We test our model on established instruction-guided manipulation benchmarks, as well as benchmarks of compositional instructions we introduce.  We show our model can execute highly compositional instructions zero-shot in simulation and in the real world.  It outperforms language-to-action  reactive policies and  Large Language Model planners by a large margin,  especially for long  instructions that involve  compositions of multiple spatial concepts.
+            Language is compositional; an instruction can express multiple relation constraints to hold among objects in a scene that a robot is tasked to rearrange. Our focus in this work is an instructable scene-rearranging framework that generalizes to longer instructions and to spatial concept compositions never seen at training time. We propose to represent language-instructed spatial concepts with energy functions over relative object arrangements. A language parser maps instructions to corresponding energy functions and an open-vocabulary visual-language model grounds their arguments to relevant objects in the scene. We generate goal scene configurations by gradient descent on the sum of energy functions, one per language predicate in the instruction. Local vision-based policies then re-locate objects to the inferred goal locations. We test our model on established instruction-guided manipulation benchmarks, as well as benchmarks of compositional instructions we introduce. We show our model can execute highly compositional instructions zero-shot in simulation and in the real world. It outperforms language-to-action reactive policies and Large Language Model planners by a large margin, especially for long instructions that involve compositions of multiple spatial concepts.
           </p>
         </div>
       </div>
@@ -813,6 +813,7 @@
     </div> -->
   </div>
 </section>
+
 
 
 <section class="section">
@@ -833,8 +834,227 @@
         
         <div class="content has-text-justified">
           <p>
-            Given an image and a language instruction, a semantic parser maps the language into a set of  energy functions (BinaryEBM, MultiAryEBM), one for each spatial predicate in the instruction, and calls  to an open-vocabulary visual language grounder (VLMGround) to localize the object arguments of each energy function mentioned in the instruction, here "fruits" and "plate". Gradient descent on the sum of energy functions with respect to object spatial coordinates generates the goal scene configuration. Vision-based neural policies  condition on the predicted pick and place visual image crops and predict accurate pick and place locations to manipulate the objects. 
+            Given an image and a language instruction, a semantic parser maps the language into a set of energy functions (BinaryEBM, MultiAryEBM), one for each spatial predicate in the instruction, and calls  to an open-vocabulary visual language grounder (VLMGround) to localize the object arguments of each energy function mentioned in the instruction, here "fruits" and "plate". Gradient descent on the sum of energy functions with respect to object spatial coordinates generates the goal scene configuration. Vision-based neural policies  condition on the predicted pick and place visual image crops and predict accurate pick and place locations to manipulate the objects. 
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-max-desktop">
+          <h2 class="title is-3">Real-world Results</h2>
+          <div class="content has-text-justified">
+            <p>
+                Our model is trained in simulation and can generalize to the real world without 
+                any real-world training or adaptation thanks to the open-vocabulary detector trained on real-world images, as well 
+                as the object abstractions in the predicate EBMs and low-level policy modules. 
+                In addition to robot execution, we also show all intermediate visual grounding outputs and energy minimization for goal generation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real/circle0.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real/circle_inside_a_plate0.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real/composition_group0.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real/composition_single0.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real/line0.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-max-desktop">
+          <h2 class="title is-3">Simulation Results</h2>
+          <div class="content has-text-justified">
+            <p>
+                Videos 1-4 (left to right) demonstrate our zero-shot generalization to compositions of known concepts. 
+                Videos 5 and 6 show multi-ary concepts. 
+                Videos 7 and 8 showcase closed-loop execution. Our model fails to solve the task in the first attempt, but then re-detects the referred objects, 
+                compares their location to the goal location (the output of the EBM planner) and re-locates them to complete the task.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sim/composition_single_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sim/composition_group_2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sim/composition_group_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sim/composition_single_2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sim/circle_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sim/line_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sim/good_1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sim/good_2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-max-desktop">
+          <h2 class="title is-3">Examples of Energy Optimization</h2>
+          <div class="content has-text-justified">
+            <p>
+                (Left to right) Examples 1-5 show training concepts, both binary and multi-ary. 
+                Examples 6-8 show zero-shot generalization to compositions of training concepts. 
+                Example 9 shows a task that involves pose optimization. 
+                Examples 10 and 11 display our EBMs' ability to learn 3D concepts and generalize zero-shot to compositions of them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/above.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>Cyan above blue</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/inside.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>Cyan inside blue</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/left.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>Cyan left of blue</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/below.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>Cyan below blue</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/circle.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>Circle</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/circle_in_plate.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>(Zero-Shot) Circle inside plate</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/comp.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>(Zero-Shot) Green inside blue and blue right of red and cyan left of blue and red above box and blue below yellow</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/comp2.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>(Zero-Shot) Blue left of green and blue right of red and cyan inside blue and red below magenta and blue above yellow</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/racer.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>(Pose) A circle of triangles each pointing to the next</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/ontop.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>(3D) Red on top of green</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./static/videos/ebm/stackzs.gif">
+            <div class="carousel-caption has-text-centered">
+                <p>(3D+Zero-Shot) Stack cyan on top of red on top of green on top of blue</p>
+            </div>
         </div>
       </div>
     </div>
@@ -934,12 +1154,12 @@
       <!-- <a href="htps://arxiv.org/abs/2112.08879">[Paper]</a> -->
     </span>
     <pre><code>
-      @article{gkanatsiosspatial,
-        title={Spatial reasoning as Object Graph Energy Minimization},
-        author={Gkanatsios, Nikolaos and Jain, Ayush and Xian, Zhou and Zhang, Yunchu and Fragkiadaki, Katerina}
-      }@article{gkanatsiosspatial,
-  title={Spatial reasoning as Object Graph Energy Minimization},
-  author={Gkanatsios, Nikolaos and Jain, Ayush and Xian, Zhou and Zhang, Yunchu and Fragkiadaki, Katerina}
+      @inproceedings{gkanatsios2023energybased,
+        title={{Energy-based Models are Zero-Shot Planners for Compositional Scene Rearrangement}},
+        author={Gkanatsios, Nikolaos and Jain, Ayush and Xian, Zhou and Zhang, Yunchu and Atkeson, Christopher and Fragkiadaki, Katerina},
+        booktitle={Robotics: Science and Systems},
+        year={2023}
+      }
 }
     </code></pre>
 
@@ -961,10 +1181,10 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="https://arxiv.org/abs/2112.08879">
+         href="https://arxiv.org/abs/2304.14391">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/nickgkan/butd_detr" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/ayushjain1144/ebmplanner" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
